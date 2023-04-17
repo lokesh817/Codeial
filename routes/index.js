@@ -13,6 +13,6 @@ router.get('/reel',home_controller.reel);
 
 
 //since this file our main route we are diverting it to user whenever we need transfer request for user
-router.use('/users',require('./users'));
+router.use('/user',require('./user'));
 router.use('/post',require('./post'));
 module.exports=router;

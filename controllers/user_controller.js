@@ -13,3 +13,9 @@ module.exports.signUp=function(req,res){
         title:'Codeial | sign Up'
     })
 }
+module.exports.create=function(req,res){
+    //do later
+}
+module.exports.createSession=function(req,res){
+    //do later
+}
