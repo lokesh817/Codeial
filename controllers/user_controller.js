@@ -23,16 +23,19 @@ module.exports.create=function(req,res){
             if(!user){
                 User.create(req.body)
                     .then(function(user){
-                        return res.redirect('./user/sign-in');
+                        return res.redirect('/user/sign-in');
                     })
                     .catch(function(err){
-                        if(err){ console.log('error in user creation'); return;}        
+                        console.log(err,'error in user creation'); return;        
                     })
             }
-            return res.redirect('back');
+            else{
+                return res.redirect('back');
+            }
+            
         })
         .catch(function(err){
-            if(err){ console.log('error in finding user email'); return;}
+           console.log('error in finding user email'); return;
         })
 }
 module.exports.createSession=function(req,res){
