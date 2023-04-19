@@ -1,7 +1,7 @@
 const passport=require('passport');
 const localStrategy= require('passport-local');
 const User=require('../models/user');
-passport.use(new localStrategy({userNAmeField:'email'}),function(email,password,done){
+passport.use(new localStrategy({userNAmeField:'email'},function(email,password,done){
     //find user and establise a session 
     User.findOne({email:email})
         .then(function(){
@@ -15,7 +15,7 @@ passport.use(new localStrategy({userNAmeField:'email'}),function(email,password,
             console.log('error in finding user--> password');
             return done(err);
         })
-});
+}));
 
 // serializing user to decide whihkey is to be kept in cookie
 passport.serializeUser(function(user,done){
