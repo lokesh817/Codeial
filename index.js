@@ -1,7 +1,6 @@
 //library used
 const express = require('express');
 const route  = require('./routes');
-const app=express();
 const cookieParser=require('cookie-parser');
 const port=8000;
 const expressLayouts=require('express-ejs-layouts');
@@ -10,6 +9,7 @@ const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local');
 
+const app=express();
 //middleware used
 app.use(express.static('./assets'));
 app.use(expressLayouts);
