@@ -19,7 +19,7 @@ passport.use(new LocalStrategy({usernameField:'email',passReqToCallback:true},as
       // console.log(user);
       if(!user||user.password!=password){
         console.log('wrong');
-        req.flash('error',"Invalid username/password");
+       // req.flash('error',"Invalid username/password");
         return done(null,false);
       }
 
@@ -45,38 +45,28 @@ passport.deserializeUser(async function(id,done){
     console.log(userId);
     return done(null,userId);
 });
-module.exports=passport;
 
-// const passport=require('passport');
-// const User = require('../models/user');
+// check if the user is authenticated
+passport.checkAuthentication = function(req, res, next){
+    // if the user is signed in, then pass on the request to the next function(controller's action)
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()){
+        return next();
+    }
 
-// const LocalStrategy=require('passport-local').Strategy;
+    // if the user is not signed in
+    return res.redirect('/users/sign-in');
+}
 
-// passport.use(new LocalStrategy({
-//   usernameField:'email',
-//   passReqToCallback:true
-// },
-//   async function(email,password,done){
-     
-//       const user=await User.findOne({email});
-//       // console.log(user);
-//       if(!user||user.password!=password){
-//         console.log('wrong');
-//         //req.flash('error',"Invalid username/password");
-//         return done(null,false);
-//     }
+passport.setAuthenticatedUser = function(req, res, next){
+    if (req.isAuthenticated()){
+        // req.user contains the current signed in user from the session cookie and we are just sending this to the locals for the views
+        res.locals.user = req.user;
+    }
 
-//   return done(null,user);
-// }
-// ));
+    next();
+}
 
-// passport.serializeUser(function(user,done){
-//   done(null,user.id);
-// });
 
-// passport.deserializeUser(async function(id,done){
-//   const userId=await User.findById(id);
-//   console.log(userId);
-//   return done(null,userId);
-     
-// });
+
+module.exports = passport;

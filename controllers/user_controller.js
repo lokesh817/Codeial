@@ -1,5 +1,7 @@
 const User=require('../models/user');
+
 module.exports.profile=function(req,res){
+    console.log("*****")
     return res.render('user',{
         title:'User'
     })
