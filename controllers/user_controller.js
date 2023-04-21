@@ -52,3 +52,10 @@ module.exports.createSession=function(req,res){
     //do later
     return res.redirect('/');
 }
+module.exports.destroySession=function(req,res){
+    req.logout(function(err){
+        if(err){console.log(err,'error is logging out');}       
+        return res.redirect('/');
+    });
+    
+}
