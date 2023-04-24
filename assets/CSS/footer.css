@@ -1,0 +1,17 @@
+#footer {
+  display: flex;
+  background-color: #1b0e0e;
+  color: white;
+  align-items: baseline; }
+  #footer #reserve-text p {
+    margin: 0; }
+  #footer #links {
+    display: flex;
+    padding-left: 2%;
+    flex-direction: column; }
+    #footer #links p {
+      margin: 0;
+      padding: 1%; }
+    #footer #links a {
+      color: white;
+      text-decoration: none; }

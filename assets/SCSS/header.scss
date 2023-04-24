@@ -1,0 +1,29 @@
+#header{
+    display: flex;
+    background-color: yellowgreen;
+    width: 100%;
+    #logo{
+        max-width: 20%;
+        color: white;
+        padding-left: 1%;
+        font-family: sans-serif;
+    }
+    #auth-links{
+        
+        width: 90%;
+        ul{
+            text-align: right;
+            li{
+                display: inline-block;
+                color: white;    
+                font-family: sans-serif;
+                a{
+                    text-decoration: none;
+                    color: white;    
+                }    
+            }
+
+        }
+        
+    }
+}

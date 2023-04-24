@@ -1,0 +1,24 @@
+#footer{
+    display: flex;
+    background-color: rgb(27, 14, 14);
+    color: white;
+    align-items: baseline;
+    #reserve-text{
+        p{
+            margin: 0;
+        }
+    }
+    #links{
+        display: flex;
+        padding-left: 2%;
+        flex-direction: column;
+        p{
+            margin: 0;
+            padding: 1%;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
