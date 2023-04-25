@@ -1,4 +1,35 @@
     <link rel="stylesheet" href="CSS/home">
     <h1> This is the <%= title %> page of Codeial</h1>
-    
+    <% if(locals.user) { %>
+        <h4>Posts</h4>
+        <form action="/posts/create" id="new-post-form" method="post">
+            <textarea name="content" cols="30" rows="3" placeholder="what's in your mind?.." required></textarea>
+            <input type="submit" value="Post">
+        </form>
+        <ul>
+            <% for(post of locals.posts){ %>
+                <li>
+                    <div>
+                        <%= post.content %>
+                        <small><%= post.user.name %></small>
+                    </div>
+                    <div>
+                        <% if(locals.user) { %>
+                            <form action="comment/create" method="post">
+                                <input type="text" name="content" placeholder="Say something.." required>
+                                <input type="hidden" name="post" value="<%= post.id %>">
+                                <input type="submit" value="Add comments">
+                            </form>
+                        <% } %>
+
+                        <div>
+                            <% for(comment of post.comments) { %>
+                                <p><%= comment.user.name %> :- <small><%= comment.content %></small></p>
+                            <% } %>
+                        </div>
+                    </div>
+                </li>
+            <% } %>        
+        </ul>
+    <% } %>    
 

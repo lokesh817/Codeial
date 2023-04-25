@@ -14,5 +14,6 @@ router.get('/reel',home_controller.reel);
 
 //since this file our main route we are diverting it to user whenever we need transfer request for user
 router.use('/user',require('./user'));
-router.use('/post',require('./post'));
+router.use('/posts',require('./posts'));
+router.use('/comment',require('./comment'));
 module.exports=router;
