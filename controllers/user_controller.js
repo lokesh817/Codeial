@@ -1,10 +1,27 @@
 const User=require('../models/user');
 
 module.exports.profile=function(req,res){
-    console.log("*****")
-    return res.render('user',{
-        title:'User'
+    User.findById(req.params.id)
+    .then(function(user){
+        return res.render('user',{
+            title:'User',
+            profile_user:user
+        });
     })
+    .catch(function(err){
+        console.log(`Error occured while finding user, ${err}`);
+    })
+}
+module.exports.update=function(req,res){
+    if(req.user.id==req.params.id){
+        User.findByIdAndUpdate(req.params.id,req.body)
+        .then(function(user){
+            return res.redirect('/');
+        })
+        .catch(function(err){
+            return res.status(401).send('Unauthorized User');
+        })
+    }
 }
 module.exports.signIn=function(req,res){
     //if user already signed in it should not go to sign in page
