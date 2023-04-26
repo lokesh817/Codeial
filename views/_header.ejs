@@ -6,7 +6,7 @@
     <div id='auth-links'>
         <ul>
             <% if (locals.user) { %>
-                <li><%= user.name %></li>
+                <li><i class="fas fa-id-badge"></i> <%= user.name %></li>
                 <li><a href="/user/sign-out">Sign-out</a></li>
             <% }else { %>
                 <li><a href="/user/sign-in">Sign-in</a></li>

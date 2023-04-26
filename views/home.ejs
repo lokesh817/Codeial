@@ -1,17 +1,29 @@
-    <link rel="stylesheet" href="CSS/home.css">
-    <h1> This is the <%= title %> page of Codeial</h1>
-    <% if(locals.user) { %>
-        <h4>Posts</h4>
-        <form action="/posts/create" id="new-post-form" method="post">
-            <textarea name="content" cols="30" rows="3" placeholder="what's in your mind?.." required></textarea>
-            <input type="submit" value="Post">
-        </form>
-        <ul>
-            <% for(post of locals.posts){ %>
-                <li>
-                    <%- include('_post')%>
-                </li>
-            <% } %>        
-        </ul>
-    <% } %>    
-    <%- include('_friends')%>
+<link rel="stylesheet" href="CSS/home.css">
+<div id="feed-post">
+    <aside id="Groups">
+
+    </aside>
+    <article>
+        <% if(locals.user) { %>
+            <h4>Posts</h4>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" cols="70" rows="3" placeholder="what's in your mind?.." required></textarea>
+                <input type="submit" value="Post">
+            </form>
+            <ul id="post-list">
+                <div id="all-posts">
+                    <% for(post of locals.posts){ %>
+                        <li>
+                            <%- include('_post')%>
+                        </li>
+                        <% } %>
+                </div>
+                
+            </ul>
+            <% } %>
+    </article>
+    <aside id="friend-side">
+        <%- include('_friends')%>
+    </aside>
+    
+</div>

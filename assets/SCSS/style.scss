@@ -1,9 +1,9 @@
 body{
     margin: 0;
     /* text-align: center; */
-    background-image: linear-gradient(to top right,pink,green);
+    background-color: rgb(206, 163, 163);
     #layout-main{
-        height: 100vh;
+        min-height: 100vh;
     }
 }
 h1{

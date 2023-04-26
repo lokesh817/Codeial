@@ -1,3 +1,40 @@
 h1 {
   font-family: monospace;
   color: brown; }
+
+#feed-post {
+  display: flex;
+  padding: 0% 5%; }
+  #feed-post article {
+    width: 85%;
+    padding-left: 2%; }
+    #feed-post article #new-post-form {
+      width: 100%; }
+    #feed-post article #all-posts {
+      display: flex;
+      flex-direction: column; }
+    #feed-post article #post-list {
+      padding-left: 0; }
+      #feed-post article #post-list li {
+        list-style-type: none; }
+  #feed-post aside {
+    width: 20%;
+    padding-left: 3%;
+    border-left: 1px solid gray;
+    height: 100%; }
+    #feed-post aside h4 {
+      font-size: 1.5rem;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+    #feed-post aside i {
+      color: white;
+      background-color: gray;
+      padding: 2%;
+      border: 1px solid gray;
+      border-radius: 50%;
+      font-size: 1.1rem; }
+    #feed-post aside a {
+      padding-left: 3%;
+      color: white;
+      font-size: 1.2rem;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      text-decoration: none; }

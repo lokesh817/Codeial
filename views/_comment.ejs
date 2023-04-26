@@ -1,10 +1,11 @@
-<div>
+<link rel="stylesheet" href="/CSS/comment.css">
+<div id="comment-box">
     <% for(comment of post.comments) { %>
-        <p>
+        <p>        
+            <i class="fas fa-user"></i> <%= comment.user.name %> :- <small><%= comment.content %></small>
             <% if(locals.user && locals.user.id==comment.user.id) { %>
-                <a href="/comment/destroy/<%= comment.id %>">X</a>
-            <% } %>        
-            <%= comment.user.name %> :- <small><%= comment.content %></small>
+                <a href="/comment/destroy/<%= comment.id %>"><i class="fas fa-trash-alt"> </i></a>
+                <% } %>
         </p>
     <% } %>
 </div>

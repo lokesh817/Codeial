@@ -1,20 +1,26 @@
-<div>
-    <% if(locals.user && locals.user.id==post.user.id) { %>
-        <a href="/posts/destroy/<%= post.id %>">X</a>
-    <% } %>
-    <%= post.content %>
-    <small><%= post.user.name %></small>
+<link rel="stylesheet" href="CSS/post.css">
+<div id ="one-post">
+    <div id="post-content">
+        <div id="post-user">
+            <i class="fas fa-user-circle"></i> <%= post.user.name %>
+        </div>
+        <p>
+            <%= post.content %>
+        </p>
+        <% if(locals.user && locals.user.id==post.user.id) { %>
+            <a href="/posts/destroy/<%= post.id %>"><i class="fas fa-trash-alt"></i></a>
+        <% } %>
+    </div>
+    <div id="post-comments-box">
+        <h4>Comments</h4>
+        <% if(locals.user) { %>
+            <form action="comment/create" method="post">
+                <input type="text" name="content" placeholder="Say something.." required>
+                <input type="hidden" name="post" value="<%= post.id %>">
+                <input type="submit" value="Add comments">
+            </form>
+        <% } %>
     
-</div>
-<div>
-    <h4>Comments</h4>
-    <% if(locals.user) { %>
-        <form action="comment/create" method="post">
-            <input type="text" name="content" placeholder="Say something.." required>
-            <input type="hidden" name="post" value="<%= post.id %>">
-            <input type="submit" value="Add comments">
-        </form>
-    <% } %>
-
-    <%- include('_comment')%>
+        <%- include('_comment')%>
+    </div>
 </div>
