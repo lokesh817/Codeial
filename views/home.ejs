@@ -1,4 +1,4 @@
-    <link rel="stylesheet" href="CSS/home">
+    <link rel="stylesheet" href="CSS/home.css">
     <h1> This is the <%= title %> page of Codeial</h1>
     <% if(locals.user) { %>
         <h4>Posts</h4>
@@ -9,25 +9,7 @@
         <ul>
             <% for(post of locals.posts){ %>
                 <li>
-                    <div>
-                        <%= post.content %>
-                        <small><%= post.user.name %></small>
-                    </div>
-                    <div>
-                        <% if(locals.user) { %>
-                            <form action="comment/create" method="post">
-                                <input type="text" name="content" placeholder="Say something.." required>
-                                <input type="hidden" name="post" value="<%= post.id %>">
-                                <input type="submit" value="Add comments">
-                            </form>
-                        <% } %>
-
-                        <div>
-                            <% for(comment of post.comments) { %>
-                                <p><%= comment.user.name %> :- <small><%= comment.content %></small></p>
-                            <% } %>
-                        </div>
-                    </div>
+                    <%- include('_post')%>
                 </li>
             <% } %>        
         </ul>

@@ -21,3 +21,22 @@ module.exports.create=function(req,res){
             console.log(err,'ERROR');
         })
 }
+module.exports.destroy=function(req,res){
+    Comment.findByIdAndDelete(req.params.id)
+    .then(function(comment){
+        if(req.user.id==comment.user){
+            let postId=comment.post;
+            comment.deleteOne()
+            Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}})
+            .then(()=>{
+                return res.redirect('back');
+            })
+            .catch(()=>{
+                console.log('error',err);
+            })
+        }
+    })
+    .catch(function(err){
+        console.log(`Error ${err}`);
+    })
+}
