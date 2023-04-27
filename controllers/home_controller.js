@@ -16,12 +16,12 @@ module.exports.home= async function(req,res){
             users= await Users.find({});
         }
         catch(err){
-            // req.flash('error','Error encountered loading users');
-            console.log(`Error pulling all Users: ${err}`);
+            req.flash('error','Error encountered loading comments');
+            return;
         }
     } catch(err) {
-        // req.flash('error','Error encountered loading users');
-        console.log(`Error pulling all Users: ${err}`);
+        req.flash('error','Error encountered loading users post');
+        return;
     }
     return res.render('home',{
         title:'Home',

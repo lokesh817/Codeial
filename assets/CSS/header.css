@@ -12,6 +12,8 @@
     #header #auth-links ul {
       text-align: right; }
       #header #auth-links ul li {
+        margin-left: 2%;
+        border-radius: 15%;
         display: inline-block;
         color: white;
         font-family: sans-serif; }

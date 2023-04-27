@@ -7,10 +7,10 @@
         <ul>
             <% if (locals.user) { %>
                 <li><i class="fas fa-id-badge"></i> <%= user.name %></li>
-                <li><a href="/user/sign-out">Sign-out</a></li>
+                <li><a href="/user/sign-out"> <i class="fas fa-power-off"></i></a></li>
             <% }else { %>
-                <li><a href="/user/sign-in">Sign-in</a></li>
-                <li><a href="/user/sign-up">Sign-up</a></li>
+                <li><a href="/user/sign-in"><i class="fas fa-right-to-bracket"></i> Sign-in</a></li>
+                <li><a href="/user/sign-up"> <i class="fas fa-user-plus"></i> Sign-up</a></li>
             <% } %>
         </ul>
     </div>

@@ -11,32 +11,14 @@ module.exports.create=async function(req,res){
             });
             post.comments.push(comments);
             post.save();
+            req.flash('success','Comment added');
             res.redirect('/');
         }
     }
     catch{
-        console.log(err,'ERROR');
-        return;
+        req.flash('error','Comment not added');
+        return res.redirect('back');
     }
-}
-module.exports.destroy=function(req,res){
-    Comment.findByIdAndDelete(req.params.id)
-    .then(function(comment){
-        if(req.user.id==comment.user){
-            let postId=comment.post;
-            comment.deleteOne()
-            Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}})
-            .then(()=>{
-                return res.redirect('back');
-            })
-            .catch(()=>{
-                console.log('error',err);
-            })
-        }
-    })
-    .catch(function(err){
-        console.log(`Error ${err}`);
-    })
 }
 
 module.exports.destroy=async function(req,res){
@@ -46,14 +28,16 @@ module.exports.destroy=async function(req,res){
             let postId=comment.post;
             comment.deleteOne();
             Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}})
+            req.flash('success','Your Comment Deleted')
             return res.redirect('back');
         }
         else{
+            req.flash('error','unauthorized user can not delete post');
             return res.redirect('back');
         }   
     }
     catch(err){
-        console.log(`Error ${err}`);
-        return;
+        req.flash('error','Internal error');
+        return res.redirect('back');
     }
 }

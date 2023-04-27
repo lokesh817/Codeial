@@ -9,16 +9,19 @@ module.exports.profile=function(req,res){
         });
     })
     .catch(function(err){
-        console.log(`Error occured while finding user, ${err}`);
+        req.flash('error','Error occured while finding user');
+        return;
     })
 }
 module.exports.update=function(req,res){
     if(req.user.id==req.params.id){
         User.findByIdAndUpdate(req.params.id,req.body)
         .then(function(user){
+            req.flash('success','Profile Updated');
             return res.redirect('/');
         })
         .catch(function(err){
+            req.flash('error','Access denied');
             return res.status(401).send('Unauthorized User');
         })
     }
@@ -50,10 +53,11 @@ module.exports.create=function(req,res){
             if(!user){
                 User.create(req.body)
                     .then(function(user){
+                        req.flash('success','Account created')
                         return res.redirect('/user/sign-in');
                     })
                     .catch(function(err){
-                        console.log(err,'error in user creation'); return;        
+                        req.flash('error','User not created'); return;        
                     })
             }
             else{
@@ -62,16 +66,19 @@ module.exports.create=function(req,res){
             
         })
         .catch(function(err){
-           console.log('error in finding user email'); return;
+            req.flash('error','User id not exists');
+            return;
         })
 }
 module.exports.createSession=function(req,res){
     //do later
+    req.flash('success','Sign-in Successfully');
     return res.redirect('/');
 }
 module.exports.destroySession=function(req,res){
     req.logout(function(err){
         if(err){console.log(err,'error is logging out');}       
+        req.flash('success','logged out');
         return res.redirect('/');
     });
     
