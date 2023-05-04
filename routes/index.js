@@ -16,4 +16,5 @@ router.get('/reel',home_controller.reel);
 router.use('/user',require('./user'));
 router.use('/posts',require('./posts'));
 router.use('/comment',require('./comment'));
+
 module.exports=router;

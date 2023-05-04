@@ -11,11 +11,22 @@ module.exports.create=async function(req,res){
             });
             post.comments.push(comments);
             post.save();
+            console.log('outside xhr');
+            if(req.xhr){
+                console.log('inside xhr request');
+                comments = await comments.populate('user','name')
+                return res.status(200).json({
+                    data:{
+                        comments:comments    
+                    },message:'comment added!'
+                });
+            } 
             req.flash('success','Comment added');
             res.redirect('/');
         }
     }
-    catch{
+    catch(err){
+        console.log('inside catch',err);
         req.flash('error','Comment not added');
         return res.redirect('back');
     }
@@ -28,6 +39,14 @@ module.exports.destroy=async function(req,res){
             let postId=comment.post;
             comment.deleteOne();
             Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}})
+            if (req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "Post deleted"
+                });
+            }
             req.flash('success','Your Comment Deleted')
             return res.redirect('back');
         }

@@ -13,7 +13,7 @@
             <ul id="post-list">
                 <div id="all-posts">
                     <% for(post of locals.posts){ %>
-                        <li>
+                        <li id="post-<%= post._id %>">
                             <%- include('_post')%>
                         </li>
                         <% } %>
@@ -27,3 +27,5 @@
     </aside>
     
 </div>
+<script src="/JS/home_postComment.js"></script>
+<script src="/JS/home_post.js"></script>
