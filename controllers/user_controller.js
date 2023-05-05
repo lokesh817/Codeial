@@ -1,4 +1,6 @@
-const User=require('../models/user');
+const fs = require('fs');
+const path = require('path');
+const User = require('../models/user');
 
 module.exports.profile=function(req,res){
     User.findById(req.params.id)
@@ -13,18 +15,33 @@ module.exports.profile=function(req,res){
         return;
     })
 }
-module.exports.update=function(req,res){
+module.exports.update=async function(req,res){
     if(req.user.id==req.params.id){
-        User.findByIdAndUpdate(req.params.id,req.body)
-        .then(function(user){
-            req.flash('success','Profile Updated');
-            return res.redirect('/');
-        })
-        .catch(function(err){
+        try{
+            let user= await User.findById(req.params.id);
+            User.uploadsAvatar(req,res,function(err){
+                if(err){console.log('**** multer error:****',err)}
+                user.name=req.body.name;
+                user.email=req.body.email;
+                if(req.file){
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+                    user.avatar=User.avatarPath+'/'+req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            })
+        
+        }
+        catch(err){
             req.flash('error','Access denied');
             return res.status(401).send('Unauthorized User');
-        })
-    }
+        }
+    }else{
+        req.flash('error','Unauthorized User!');
+        return res.status(401).send('Unauthorized')
+    }   
 }
 module.exports.signIn=function(req,res){
     //if user already signed in it should not go to sign in page
