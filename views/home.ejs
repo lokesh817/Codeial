@@ -11,13 +11,11 @@
                 <input type="submit" value="Post">
             </form>
             <ul id="post-list">
-                <div id="all-posts">
                     <% for(post of locals.posts){ %>
                         <li id="post-<%= post._id %>">
                             <%- include('_post')%>
                         </li>
                         <% } %>
-                </div>
                 
             </ul>
             <% } %>
