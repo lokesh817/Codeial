@@ -11,9 +11,7 @@ module.exports.create=async function(req,res){
             });
             post.comments.push(comments);
             post.save();
-            console.log('outside xhr');
             if(req.xhr){
-                console.log('inside xhr request');
                 comments = await comments.populate('user','name')
                 return res.status(200).json({
                     data:{

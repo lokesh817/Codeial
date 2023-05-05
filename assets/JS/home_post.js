@@ -36,12 +36,14 @@
                 </div>
                 <div id="post-comments-box">
                     <h4>Comments</h4>
-                        <form action="comment/create" id="post-${ post._id }-comments-form" method="post">
-                            <input type="text" name="content" placeholder="Say something.." required>
-                            <input type="hidden" name="post" value="${post._id }">
-                            <input type="submit" value="Add comments">
-                        </form>
-                    
+                    <form action="comment/create" id="post-${ post._id }-comments-form" method="post">
+                        <input type="text" name="content" placeholder="Say something.." required>
+                        <input type="hidden" name="post" value="${post._id }">
+                        <input type="submit" value="Add comments">
+                    </form>
+                    <div id="comment-box-${post._id}">
+                        
+                    </div>
                 </div>
             </div>
     
