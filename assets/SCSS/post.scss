@@ -1,15 +1,52 @@
 #one-post{
     border: 1px solid #a5b9b1;
-    margin: 0.5%;
-    border-radius: 18px 18px 10px 10px;
+    margin: 3% 0%;
+    border-radius: 7px 7px 0px 0px;
     background-color: white;
+    color: gray;
     // padding: 1px;
+    position: relative;
     #post-content{
+        color: white;
         #post-user{
             width: inherit;
             padding: 3%;
-            border-radius: 15px 15px 0px 0px;
-            background-image: linear-gradient(to bottom right, #e34964,green) ;
+            border-radius: 7px 7px 0px 0px;
+            background-color: #41b03ae0 ;
+        }
+        p{
+            height: 15vh;
+            color: gray;
+        }
+        .delete-post-button{
+            color: red;
+            position: absolute;
+            top: 5%;
+            right: 2%;
+            
+        }
+    }
+    #post-comments-box{
+        padding: 2% 0% 2% 2%;
+        
+        background-color: #c0e468;
+        color: blue;
+        h4{
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        form{
+            input{
+                border: 0;
+                background-color: transparent;
+                border-bottom:2px solid green;
+                outline: none;
+            }
+            input[type=submit]{
+                background-color: green;
+                color: white;
+                border-radius: 3px;
+            }
         }
     }
 }

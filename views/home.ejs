@@ -1,28 +1,41 @@
 <link rel="stylesheet" href="CSS/home.css">
 <div id="feed-post">
-    <aside id="Groups">
-
-    </aside>
+    <% if(locals.user) { %>
+        <aside id="Groups">
+            <h4>Groups</h4>
+        </aside>
+    <% } %>
     <article>
         <% if(locals.user) { %>
-            <h4>Posts</h4>
-            <form action="/posts/create" id="new-post-form" method="post">
-                <textarea name="content" cols="70" rows="3" placeholder="what's in your mind?.." required></textarea>
-                <input type="submit" value="Post">
-            </form>
-            <ul id="post-list">
-                    <% for(post of locals.posts){ %>
-                        <li id="post-<%= post._id %>">
-                            <%- include('_post')%>
-                        </li>
-                        <% } %>
+            <div class="post-box">
+                <div id="post-box-heading">
+                    <h1> <i class="fas fa-pen"></i> Posts</h1>
+                </div>
+                <div id="post-form">
+                    <form action="/posts/create" id="new-post-form" method="post">
+                        <textarea name="content" placeholder="what's in your mind?.." required></textarea>
+                        <input class="button" type="submit" value="Post">
+                    </form>
+                </div>
                 
+            </div>
+            <ul id="post-list">
+                <% for(post of locals.posts){ %>
+                    <li id="post-<%= post._id %>">
+                        <%- include('_post')%>
+                    </li>
+                    <% } %>
+            
             </ul>
+            <% } else {%>
+                <img id="welcome-image" src="../uploads/users/welcome-home.jpg" alt="welcome-home picture">
             <% } %>
     </article>
-    <aside id="friend-side">
-        <%- include('_friends')%>
-    </aside>
+    <% if(locals.user) { %>
+        <aside id="friend-side">
+            <%- include('_friends')%>
+        </aside>
+    <% } %>
     
 </div>
 <script src="/JS/home_postComment.js"></script>

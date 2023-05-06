@@ -1,9 +1,7 @@
 body {
   margin: 0;
   /* text-align: center; */
-  background-color: #cea3a3; }
+  background-color: #e4e0e0; }
   body #layout-main {
-    min-height: 100vh; }
-
-h1 {
-  color: white; }
+    min-height: 90vh;
+    color: #003585; }

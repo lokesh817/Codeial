@@ -1,15 +1,36 @@
-h1 {
-  font-family: monospace;
-  color: brown; }
-
 #feed-post {
   display: flex;
-  padding: 0% 5%; }
+  padding: 0% 5%;
+  margin-top: 1%; }
   #feed-post article {
     width: 85%;
-    padding-left: 2%; }
-    #feed-post article #new-post-form {
-      width: 100%; }
+    padding: 0% 3%;
+    max-height: 90vh;
+    overflow: scroll; }
+    #feed-post article .post-box #post-box-heading {
+      padding-left: 1%;
+      width: inherit;
+      background-color: #149DE1; }
+      #feed-post article .post-box #post-box-heading h1 {
+        margin: 0; }
+    #feed-post article .post-box #post-form {
+      position: relative; }
+      #feed-post article .post-box #post-form #new-post-form {
+        width: 100%; }
+        #feed-post article .post-box #post-form #new-post-form textarea {
+          box-sizing: border-box;
+          width: 100%;
+          height: 25vh;
+          outline: none;
+          border: none;
+          resize: none; }
+        #feed-post article .post-box #post-form #new-post-form .button {
+          position: relative;
+          left: 1%;
+          border: 2px solid #149DE1;
+          border-radius: 5px;
+          color: white;
+          background-color: #149DE1; }
     #feed-post article #all-posts {
       display: flex;
       flex-direction: column; }
@@ -17,24 +38,39 @@ h1 {
       padding-left: 0; }
       #feed-post article #post-list li {
         list-style-type: none; }
+    #feed-post article #welcome-image {
+      padding-top: 5%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 75vh;
+      object-fit: fill; }
+  #feed-post article::-webkit-scrollbar {
+    display: none; }
   #feed-post aside {
-    width: 20%;
-    padding-left: 3%;
-    border-left: 1px solid gray;
-    height: 100%; }
+    background-color: white;
+    width: 28%;
+    padding-left: 2%;
+    height: 90vh;
+    overflow: scroll; }
     #feed-post aside h4 {
       font-size: 1.5rem;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+      font-family: 'Lucida Sans'; }
+    #feed-post aside p {
+      border-bottom: 2px solid #c1d0c1;
+      padding-bottom: 5%; }
     #feed-post aside i {
       color: white;
-      background-color: gray;
+      background-color: #ee0da5;
       padding: 2%;
-      border: 1px solid gray;
+      border: 3px solid #d1c0c0;
       border-radius: 50%;
       font-size: 1.1rem; }
     #feed-post aside a {
       padding-left: 3%;
-      color: white;
+      color: #430d87;
       font-size: 1.2rem;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-family: 'Lucida Sans';
       text-decoration: none; }
+  #feed-post aside::-webkit-scrollbar {
+    display: none; }

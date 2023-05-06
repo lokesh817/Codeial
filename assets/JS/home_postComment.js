@@ -22,7 +22,6 @@ class PostComments{
                     console.log(data);
                     let newComment=pSelf.createCommentDom(data.data.comments);
                     $(`#comment-box-${postId}`).prepend(newComment);
-
                     NotyNotification('Comment added ','success');
                     pSelf.deleteComment($(' .delete-comment-button',newComment));
                 },
