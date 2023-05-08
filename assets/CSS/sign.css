@@ -7,6 +7,7 @@
   margin-right: auto;
   background-image: linear-gradient(#f4f0f0, #71e06e); }
   .parent .child {
+    text-align: center;
     display: inline-block;
     width: 100%;
     height: 70vh; }
@@ -17,7 +18,6 @@
       font-weight: 900;
       text-align: center; }
     .parent .child form {
-      text-align: center;
       line-height: 3rem; }
       .parent .child form input {
         outline: none;
@@ -29,3 +29,12 @@
         background-color: #003585;
         border-radius: 3px;
         color: white; }
+    .parent .child .social-auth-icons {
+      color: gray; }
+      .parent .child .social-auth-icons a {
+        border-radius: 40%;
+        background-color: white;
+        border: 1px solid gray;
+        padding: 1%;
+        box-shadow: 0 0 2px 3px white;
+        font-size: 0.7rem; }

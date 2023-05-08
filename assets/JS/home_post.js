@@ -88,7 +88,7 @@
             text: text,
             type: type,
             layout : "topRight",
-            timeout : 1500
+            timeout : 500
             }).show();
     }
     createPost();

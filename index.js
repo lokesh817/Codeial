@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customeMiddleware = require('./config/flashMiddleware');
+const passportGoogleOAuth = require('./config/passport-google-oauth2-strategy');
 
 app.use(sassMiddleware({
     src: './assets/SCSS',
