@@ -1,6 +1,5 @@
 const nodeMailer= require('../../config/nodemailer')
 exports.newComment = (comment)=>{
-    console.log('inside new comment mailer');
     let HTML=nodeMailer.renderTemplate({comment:comment},'/comment/new_comments.ejs')
     nodeMailer.transporter.sendMail({
         from:'pal.lokesh6396@gmail.com',

@@ -4,4 +4,9 @@
     <% if(locals.user && locals.user.id==comment.user.id) { %>
         <a class="delete-comment-button" href="/comment/destroy/<%= comment.id %>"><i class="fas fa-trash-alt"> </i></a>
         <% } %>
+        <div class="like-button"> 
+            <a class="toggle-like-button" data-likes="<%= comment.like.length%>" href="like/toggle/?id=<%=comment.id%>&type=comment">
+                <i class=" fas fa-heart"></i><%= comment.like.length%>
+            </a> 
+        </div>
 </p>

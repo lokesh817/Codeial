@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="CSS/post.css">
+<!-- <link rel="stylesheet" href="CSS/post.css"> -->
 <div id ="one-post">
     <div id="post-content">
         <div id="post-user">
@@ -10,6 +10,12 @@
         <% if(locals.user && locals.user.id==post.user.id) { %>
             <a class="delete-post-button" href="/posts/destroy/<%= post.id %>"><i class="fas fa-trash-alt"></i></a>
         <% } %>
+    </div>
+    <div class="like-button">
+        <a class="toggle-like-button" data-likes="<%= post.like.length %>" href="/like/toggle/?id=<%= post._id%>&type=post">
+            <i class=" fas fa-heart"></i> 
+            <%= post.like.length %>
+        </a>
     </div>
     <div id="post-comments-box">
         <h4>Comments</h4>

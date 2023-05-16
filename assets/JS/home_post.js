@@ -2,8 +2,10 @@
     //sending post data manually through ajax
     let createPost=function(){
         let newPostForm=$('#new-post-form');
+        
         newPostForm.submit(function(e){
             e.preventDefault();
+        
             $.ajax({
                 type:'post',
                 url:'/posts/create',
@@ -13,7 +15,10 @@
                     $('#post-list').prepend(newPost);
                     NotyNotification('Post Created','success');
                     deletePost($(' .delete-post-button',newPost));
+                    //call the create comment class
                     new PostComments(data.data.post._id);
+                    // change  :: enable the functionality of the toggle like button on the new post
+                    new ToggleLike($(' .toggle-like-button', newPost));
                 },
                 error: function(err){
                     console.log(err.responseText);
@@ -33,6 +38,11 @@
                         ${post.content}
                     </p>
                         <a class="delete-post-button" href="/posts/destroy/${post._id}"><i class="fas fa-trash-alt"></i></a>
+                </div>
+                <div class="like-button"> 
+                    
+                    <a class="toggle-like-button" data-likes="0" href="like/toggle/?id=${post._id}&type=post"><i class=" fas fa-heart"></i> 0 </a>
+                
                 </div>
                 <div id="post-comments-box">
                     <h4>Comments</h4>
@@ -54,10 +64,11 @@
     let deletePost=function(deleteLink){
         $(deleteLink).click(function(e){
             e.preventDefault();
+            
             $.ajax({
                 type:'get',
                 url:$(deleteLink).prop('href'),
-                success:function(data){
+                success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
                     NotyNotification('Post Deleted','success');
                 },error:function(error){
@@ -71,15 +82,13 @@
     let convertPostsToAjax=function(){
         $('#post-list>li').each(function(){
             let self= $(this);
-            console.log('self',self);
             let deleteButton =$(' .delete-post-button',self);
             deletePost(deleteButton);
             //get the post's id by spiltting the id attribute
             
             let postId = self.prop('id').split("-")[1];
-            console.log('postId:',postId);
             new PostComments(postId);
-        })
+        });
     }
 
     function NotyNotification(text,type){
