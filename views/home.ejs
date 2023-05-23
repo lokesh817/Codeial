@@ -37,7 +37,7 @@
             <%- include('_friends')%>
         </aside>
     <% } %>
-    
+    <%- include('_chat_box')%>
 </div>
 
 <!-- importing this script for creating the comments -->
@@ -47,15 +47,18 @@
 <!-- import the script file for toggle likes,also run it over for the already present posts and comments on the page -->
 <script src="JS/toggle_like.js"></script>
 <script>
-//     $(document).ready(function() {
-//     $('.toggle-like-button').click(function() {
-//         $(this).toggleClass('liked');
-//     });
-// });
-$(document).ready(function() {
-    $(' .toggle-like-button').each(function(){
-        let self =this;
-        let toggleLike =new ToggleLike(self);
+    $(document).ready(function() {
+        $(' .toggle-like-button').each(function(){
+            let self =this;
+            let toggleLike =new ToggleLike(self);
+        });
     });
-});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script src="/JS/chat_engine.js"></script>
+<% if(locals.user){ %>
+    <script>
+        console.log('<%= locals.user.name %>');
+        new chatEngine('user-chat-box', '<%= locals.user.email %>','<%= locals.user.name %>');
+    </script>
+<% } %>

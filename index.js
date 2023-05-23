@@ -14,6 +14,15 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customeMiddleware = require('./config/flashMiddleware');
 const passportGoogleOAuth = require('./config/passport-google-oauth2-strategy');
+const cors = require('cors');
+
+
+//setup the chat server to be used with socket.io
+const chatServer=require('http').Server(app);
+const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(1000);
+console.log('Chat server is running over 1000 port');
+app.use(cors());
 
 app.use(sassMiddleware({
     src: './assets/SCSS',
