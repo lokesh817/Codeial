@@ -45,6 +45,9 @@ class chatEngine{
                     chatroom:'codeial'
                 });
             }
+            let input=document.getElementById('chat-message-input');
+            input.value='';
+            
         });
 
         self.socket.on('receive_message',function(data){
@@ -58,7 +61,7 @@ class chatEngine{
                 messageType='self-message';
             }
             newMessage.append($('<sub>',{
-                'html':data.user_name[0]
+                'html':data.user_name
             }));
             newMessage.append($('<span>',{
                 'html':data.message
@@ -71,6 +74,7 @@ class chatEngine{
             newMessage.addClass(messageType);
             
             $('#chat-messages-list').append(newMessage);
+            
         })
     }
 }

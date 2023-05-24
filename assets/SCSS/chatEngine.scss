@@ -3,13 +3,15 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    border: 1px dashed grey;
+    border: 2px solid grey;
+	border-radius: 3%;
     height: 350px;
 	width: 300px;
 	background: white;
 	padding: 5px;
-	box-shadow: 1px 1px 1px 1px lightgrey;
+	box-shadow: -5px -5px 18px 5px antiquewhite;
 	padding-bottom: 3%;
+	background-color: oldlace;
 	
     #chat-messages-list{
 		margin: 0;
@@ -41,8 +43,8 @@
 				box-shadow: 0px 1px 1px 2px white;
 			}
 			span {
-				color: gray;
-				font-size: 0.7rem;
+				color: darkslategrey;
+    			font-size: 1.5rem;
 			}
 		}
 	    .other-message{
@@ -69,7 +71,8 @@
     }
     #chat-message-input-container{
     	position: absolute;
-		padding-bottom: 1px;
+		padding-bottom: 3px;
+		padding-left: 19px;
 		bottom: 0px;    
 		height: 8%;
 		width: 95%;
@@ -77,16 +80,23 @@
 		flex-direction: row;
 		// border: 1px solid gray;
 		#chat-message-input{
-			width: 60%;
-			outline: none;
+			width: 70%;
+			border: 0;
+    		box-shadow: -3px 1px 15px 4px white;
 		}
 		#send-message{	
-			width: 30%;
+			width: 20%;
 			font-size: 25px;
 			color: white;
 			border: none;
-			background: #58d258;
+			background-color: transparent;
+			color: gray;
 			
 		}
+		// .fa-rotate-45 {
+		// 	-ms-transform:rotate(45deg);     /* Internet Explorer 9 */
+		// 	-webkit-transform:rotate(45deg); /* Chrome, Safari, Opera */
+		// 	transform:rotate(45deg);         /* Standard syntax */
+		// }
 	}
 }
